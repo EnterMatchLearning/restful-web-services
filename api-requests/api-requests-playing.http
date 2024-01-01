@@ -1,0 +1,70 @@
+@in-place-var = 1
+@in-place-var-name = "Victor"
+
+### Create a user
+< {%
+    client.log(request.body.tryGetSubstituted())
+    const signature = crypto.hmac.sha256()
+        .withTextSecret("very_complex_key_haha")
+        .updateWithText(request.body.tryGetSubstituted())
+        .digest().toHex();
+    client.log("signature =", signature)
+    const hash = crypto.sha256()
+        .updateWithText(request.body.tryGetSubstituted())
+        .digest().toHex();
+    client.log("hash =", hash)
+%}
+POST {{host}}/users
+Content-Type: application/json
+
+{
+  "name": {{in-place-var-name}},
+  "birthDate": "1990-04-05"
+}
+
+> {%
+    import {getParameter} from 'utils'
+
+    client.global.set("id", getParameter(response, "id"))
+    client.test("Name is Victor", function () {
+        client.assert(getParameter(response, "name") === "Victor")
+    })
+%}
+
+### Get all users
+< {%
+    client.log(request.headers.all().map(h => h.name + ": " + h.getRawValue()).join("\n"))
+%}
+GET {{host}}/users
+Content-Type: application/json
+
+> get-all-users-response-handler.js
+>>! {{$projectRoot}}/get-all-users-response.json
+
+
+### Get a user
+< {%
+    // import {buildParamFromEnvironment} from 'my-utils'
+
+    // request.variables.set("my-param", client.global.get("id"))
+    request.variables.set("my-param", "1")
+    request.variables.set("my-param-2", "2")
+    client.log("my-param =", request.variables.get("my-param"))
+%}
+GET {{host}}/users/{{my-param-2}}
+Content-Type: application/json
+
+> {%
+    import {getParameter} from 'utils'
+
+    client.log("name =", getParameter(response, "name"))
+    client.test("Name is Adam", function () {
+        client.assert(getParameter(response, "name") === "Adam")
+    })
+%}
+
+
+### Delete a user
+DELETE {{host}}/users/{{id}}
+Content-Type: application/json
+
