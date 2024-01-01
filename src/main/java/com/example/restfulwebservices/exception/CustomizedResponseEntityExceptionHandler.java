@@ -1,4 +1,4 @@
-package com.example.restfulwebservices.helloworld;
+package com.example.restfulwebservices.exception;
 
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpHeaders;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+import com.example.restfulwebservices.user.UserNotFoundException;
 
 import java.time.LocalDate;
 import java.util.stream.Collectors;

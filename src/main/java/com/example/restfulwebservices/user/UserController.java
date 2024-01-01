@@ -1,4 +1,4 @@
-package com.example.restfulwebservices.helloworld;
+package com.example.restfulwebservices.user;
 
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;

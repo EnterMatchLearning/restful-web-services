@@ -1,4 +1,4 @@
-package com.example.restfulwebservices.helloworld;
+package com.example.restfulwebservices.exception;
 
 import java.time.LocalDate;
 
