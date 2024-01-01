@@ -32,6 +32,9 @@ Content-Type: application/json
 %}
 
 ### Get all users
+< {%
+    client.log(request.headers.all().map(h => h.name + ": " + h.getRawValue()).join("\n"))
+%}
 GET {{host}}/users
 Content-Type: application/json
 

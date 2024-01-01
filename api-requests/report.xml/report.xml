@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="14" name="IntelliJ IDEA HTTP Client">
+  <testsuite tests="14" name="api-requests" failures="1" errors="0" skip="0">
+    <testcase classname="http.Create_a_user" name="Pre-request Handler" time="0.122" />
+    <testcase classname="http.Create_a_user" name="Response" time="0.107" />
+    <testcase classname="http.Create_a_user" name="Name is Victor" time="0.0" />
+    <testcase classname="http.Create_a_user" name="Response Handler" time="0.031" />
+    <testcase classname="http.Get_all_users" name="Pre-request Handler" time="0.013" />
+    <testcase classname="http.Get_all_users" name="Response" time="0.004" />
+    <testcase classname="http.Get_all_users" name="Response save" time="0.0" />
+    <testcase classname="http.Get_all_users" name="Response Handler" time="0.006" />
+    <testcase classname="http.Get_a_user" name="Pre-request Handler" time="0.007" />
+    <testcase classname="http.Get_a_user" name="Response" time="0.004" />
+    <testcase classname="http.Get_a_user" name="Name is Adam" time="0.001">
+      <failure type="Error" message="AssertionError: Assert failed&#10;  &lt;anonymous&gt; (at /workdir/api-requests.http:62)" />
+    </testcase>
+    <testcase classname="http.Get_a_user" name="Response Handler" time="0.009" />
+    <testcase classname="http.Delete_a_user" name="Response" time="0.004" />
+    <testcase classname="http.Delete_a_user" name="Response Handler" time="0.0" />
+  </testsuite>
+</testsuites>
+

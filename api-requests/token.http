@@ -1,0 +1,25 @@
+POST https://httpbin.org/post
+Content-Type: application/json
+
+{
+  "token": "my-secret-token"
+}
+
+> {%
+    client.global.set("auth_token", response.body.json.token);
+%}
+
+
+###
+//Accessing a variable
+GET https://httpbin.org/headers
+Authorization: Bearer {{auth_token}}
+
+
+###
+GET https://httpbin.org/cookies
+
+//Saving a cookie from the first Set-Cookie header
+> {%
+    client.global.set("my_cookie", response.headers.valuesOf("Set-Cookie")[0]);
+%}
