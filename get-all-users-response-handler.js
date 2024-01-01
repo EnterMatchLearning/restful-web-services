@@ -1,0 +1,1 @@
+client.log("User names: ", response.body.map(it => it.name).join(", "));
