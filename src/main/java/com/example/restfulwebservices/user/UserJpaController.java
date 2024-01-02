@@ -18,12 +18,9 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @RestController
 public class UserJpaController {
 
-    private final UserDaoService userDaoService;
-
     private final UserRepository userRepository;
 
-    public UserJpaController(UserDaoService userDaoService, UserRepository userRepository) {
-        this.userDaoService = userDaoService;
+    public UserJpaController(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
