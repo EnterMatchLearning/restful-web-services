@@ -1,5 +1,6 @@
 package com.example.restfulwebservices.user;
 
+import com.example.restfulwebservices.exception.UserNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;

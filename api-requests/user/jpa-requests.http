@@ -2,7 +2,7 @@
 GET {{host}}/jpa/users
 
 ### Get user by id
-GET {{host}}/jpa/users/10001
+GET {{host}}/jpa/users/1
 
 ### Create user
 POST {{host}}/jpa/users
@@ -14,4 +14,23 @@ Content-Type: application/json
 }
 
 ### Delete user by id
-DELETE {{host}}/jpa/users/10001
+DELETE {{host}}/jpa/users/1
+Accept: application/json
+
+### Get all posts from a user
+GET {{host}}/jpa/users/1/posts
+
+### Create Post for a user
+POST {{host}}/jpa/users/1/posts
+Content-Type: application/json
+
+{
+  "description": "This is my created post"
+}
+
+> {%
+    client.global.set("post-id", response.body["id"])
+%}
+
+### Get post by id
+GET {{host}}/jpa/users/1/posts/{{post-id}}

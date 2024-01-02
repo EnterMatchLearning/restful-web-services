@@ -1,0 +1,18 @@
+### Create a user
+POST {{host}}/users
+Content-Type: application/json
+
+{
+  "name": "Victor",
+  "birthDate": "2000-01-01"
+}
+
+### Get all users
+GET {{host}}/users
+Accept: application/json
+#Accept: application/xml
+
+### Get a user
+GET {{host}}/users/1
+Accept: application/json
+
