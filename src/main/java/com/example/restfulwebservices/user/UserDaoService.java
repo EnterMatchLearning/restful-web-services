@@ -2,7 +2,6 @@ package com.example.restfulwebservices.user;
 
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
@@ -14,9 +13,9 @@ public class UserDaoService {
     private static int userCount = 0;
 
     static {
-        users.add(new User(++userCount, "Adam", LocalDate.now().minusYears(30)));
-        users.add(new User(++userCount, "Eve", LocalDate.now().minusYears(25)));
-        users.add(new User(++userCount, "Jim", LocalDate.now().minusYears(20)));
+//        users.add(new User(++userCount, "Adam", LocalDate.now().minusYears(30)));
+//        users.add(new User(++userCount, "Eve", LocalDate.now().minusYears(25)));
+//        users.add(new User(++userCount, "Jim", LocalDate.now().minusYears(20)));
     }
 
     public List<User> findAll() {
@@ -24,7 +23,7 @@ public class UserDaoService {
     }
 
     public User save(User user) {
-        user.setId(++userCount);
+//        user.setId(++userCount);
         users.add(user);
         return user;
     }

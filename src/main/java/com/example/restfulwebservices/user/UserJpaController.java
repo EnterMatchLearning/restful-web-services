@@ -15,6 +15,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
@@ -48,7 +49,7 @@ public class UserJpaController {
     }
 
     @GetMapping(path = "/jpa/users/{id}")
-    public EntityModel<User> retrieveUser(@PathVariable int id) {
+    public EntityModel<User> retrieveUser(@PathVariable UUID id) {
         Optional<User> user = userRepository.findById(id);
         if (user.isEmpty()) {
             throw new UserNotFoundException("id:" + id);
@@ -61,7 +62,7 @@ public class UserJpaController {
     }
 
     @DeleteMapping(path = "/jpa/users/{id}")
-    public void deleteUser(@PathVariable int id) {
+    public void deleteUser(@PathVariable UUID id) {
         User user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("id:" + id));
         if (!user.getPosts().isEmpty()) {
             throw new UserWithPostsException("Can't delete a user with active posts. User ID: " + id);
@@ -72,13 +73,13 @@ public class UserJpaController {
 
     // GET /users/{id}/posts
     @GetMapping(path = "/jpa/users/{id}/posts")
-    public List<Post> retrieveAllPostsByUser(@PathVariable int id) {
+    public List<Post> retrieveAllPostsByUser(@PathVariable UUID id) {
         User user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("id:" + id));
         return user.getPosts();
     }
 
     @PostMapping(path = "/jpa/users/{id}/posts")
-    public ResponseEntity<Post> createPost(@PathVariable int id, @RequestBody Post post) {
+    public ResponseEntity<Post> createPost(@PathVariable UUID id, @RequestBody Post post) {
         User user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("id: " + id));
         post.setUser(user);
         Post savedPost = postRepository.save(post);
@@ -92,9 +93,9 @@ public class UserJpaController {
     }
 
     @GetMapping(path = "/jpa/users/{id}/posts/{postId}")
-    public EntityModel<Post> retrievePost(@PathVariable int id, @PathVariable int postId) {
+    public EntityModel<Post> retrievePost(@PathVariable UUID id, @PathVariable UUID postId) {
         User user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("user id: " + id));
-        Post post = user.getPosts().stream().filter(p -> p.getId() == postId).findFirst()
+        Post post = user.getPosts().stream().filter(p -> p.getId().equals(postId)).findFirst()
                 .orElseThrow(() -> new PostNotFoundException("user id: " + id + ". post id: " + postId));
 
         EntityModel<Post> entityModel = EntityModel.of(post);

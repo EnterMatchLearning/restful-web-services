@@ -3,23 +3,25 @@ package com.example.restfulwebservices.user;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.UUID;
+
 @Entity
 public class Post {
 
     @Id
     @GeneratedValue
-    private Integer id;
+    private UUID id;
     private String description;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
     private User user;
 
-    public Integer getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

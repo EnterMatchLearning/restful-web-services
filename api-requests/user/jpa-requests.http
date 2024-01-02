@@ -1,11 +1,15 @@
 ### Get all users
 GET {{host}}/jpa/users
+Authorization: Basic {{username}} {{password}}
+Accept: application/json
 
 ### Get user by id
 GET {{host}}/jpa/users/1
+Authorization: Basic {{username}} {{password}}
 
 ### Create user
 POST {{host}}/jpa/users
+Authorization: Basic {{username}} {{password}}
 Content-Type: application/json
 
 {
@@ -18,10 +22,12 @@ DELETE {{host}}/jpa/users/1
 Accept: application/json
 
 ### Get all posts from a user
-GET {{host}}/jpa/users/1/posts
+GET {{host}}/jpa/users/ad402bfd-df82-4ad1-8727-5b7ce86a8967/posts
+Authorization: Basic {{username}} {{password}}
 
 ### Create Post for a user
-POST {{host}}/jpa/users/1/posts
+POST {{host}}/jpa/users/ad402bfd-df82-4ad1-8727-5b7ce86a8967/posts
+Authorization: Basic {{username}} {{password}}
 Content-Type: application/json
 
 {
@@ -33,4 +39,5 @@ Content-Type: application/json
 %}
 
 ### Get post by id
-GET {{host}}/jpa/users/1/posts/{{post-id}}
+GET {{host}}/jpa/users/ad402bfd-df82-4ad1-8727-5b7ce86a8967/posts/{{post-id}}
+Authorization: Basic {{username}} {{password}}

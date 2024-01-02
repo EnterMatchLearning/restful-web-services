@@ -1,22 +1,20 @@
 package com.example.restfulwebservices.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 
 @Entity(name = "user_details")
 public class User {
 
     @Id
     @GeneratedValue
-    private Integer id;
+    private UUID id;
     @Size(min = 2, message = "Name should have at least 2 characters")
 //    @JsonProperty("user_name")
     private String name;
@@ -28,7 +26,7 @@ public class User {
     @JsonIgnore
     private List<Post> posts;
 
-    public User(int id, String name, LocalDate birthDate) {
+    public User(UUID id, String name, LocalDate birthDate) {
         this.id = id;
         this.name = name;
         this.birthDate = birthDate;
@@ -38,11 +36,11 @@ public class User {
         // Default constructor needed for JPA
     }
 
-    public Integer getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
