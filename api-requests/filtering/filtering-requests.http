@@ -1,0 +1,7 @@
+@host=http://localhost:8080
+
+GET {{host}}/filtering
+
+###
+
+GET {{host}}/filtering-list

@@ -9,7 +9,8 @@ Content-Type: application/json
 
 ###
 GET http://localhost:8080/users
-Accept: application/xml
+Accept: application/json
+#Accept: application/xml
 
 ###
 GET http://localhost:8080/users/1
