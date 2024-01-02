@@ -1,0 +1,17 @@
+### Get all users
+GET {{host}}/jpa/users
+
+### Get user by id
+GET {{host}}/jpa/users/10001
+
+### Create user
+POST {{host}}/jpa/users
+Content-Type: application/json
+
+{
+  "name": "Victor",
+  "birthDate": "2000-01-01"
+}
+
+### Delete user by id
+DELETE {{host}}/jpa/users/10001
