@@ -12,5 +12,9 @@ GET http://localhost:8080/users
 Accept: application/xml
 
 ###
+GET http://localhost:8080/users/1
+Accept: application/json
+
+###
 GET http://localhost:8080/hello-world-internationalized
 Accept-Language: de

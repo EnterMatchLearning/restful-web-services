@@ -23,7 +23,7 @@ Content-Type: application/json
 }
 
 > {%
-    import {getParameter} from 'utils'
+    import {getParameter} from 'api-requests/user/utils'
 
     client.global.set("id", getParameter(response, "id"))
     client.test("Name is Victor", function () {
@@ -55,7 +55,7 @@ GET {{host}}/users/{{my-param-2}}
 Content-Type: application/json
 
 > {%
-    import {getParameter} from 'utils'
+    import {getParameter} from 'api-requests/user/utils'
 
     client.log("name =", getParameter(response, "name"))
     client.test("Name is Adam", function () {

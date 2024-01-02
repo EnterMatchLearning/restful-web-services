@@ -1,0 +1,36 @@
+GET {{host}}/person/v1
+
+###
+
+GET {{host}}/person/v2
+
+###
+
+GET {{host}}/person?version=1
+
+###
+
+GET {{host}}/person?version=2
+
+###
+
+GET {{host}}/person/header
+X-API-Version: 1
+
+###
+
+GET {{host}}/person/header
+X-API-Version: 2
+
+###
+
+GET {{host}}/person/accept
+Accept: application/vnd.company.app-v1+json
+
+###
+
+GET {{host}}/person/accept
+Accept: application/vnd.company.app-v2+json
+
+###
+

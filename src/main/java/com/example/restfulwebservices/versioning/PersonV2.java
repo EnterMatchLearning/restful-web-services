@@ -1,4 +1,4 @@
-package com.example.restfulwebservices.person;
+package com.example.restfulwebservices.versioning;
 
 public class PersonV2 {
 
